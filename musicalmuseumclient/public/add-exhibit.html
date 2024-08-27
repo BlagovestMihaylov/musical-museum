@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Exhibit</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="enums.js" type="module"></script>
+    <script src="add-exhibit.js" type="module" defer></script>
+</head>
+<body>
+<header>
+    <nav>
+        <ul>
+            <li><a href="admin-panel.html">Admin Panel</a></li>
+        </ul>
+    </nav>
+</header>
+<h1>Add New Exhibit</h1>
+<form id="exhibit-form">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description" required></textarea>
+
+    <label for="imageUrl">Image URL:</label>
+    <input type="text" id="imageUrl" name="imageUrl">
+
+    <label for="period">Period:</label>
+    <select id="period" name="period"></select>
+
+    <label for="instrumentType">Instrument Type:</label>
+    <select id="instrumentType" name="instrumentType"></select>
+
+    <label for="region">Region:</label>
+    <select id="region" name="region"></select>
+
+    <label for="genre">Genre:</label>
+    <select id="genre" name="genre"></select>
+
+    <label for="technology">Technology:</label>
+    <select id="technology" name="technology"></select>
+
+    <button type="submit">Add Exhibit</button>
+</form>
+</body>
+</html>

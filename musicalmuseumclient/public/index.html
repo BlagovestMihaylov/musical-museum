@@ -4,20 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musical Museum</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Reference styles.css -->
+    <link rel="stylesheet" href="styles.css">
+    <script src="enums.js" type="module"></script>
+    <script src="scripts.js" type="module" defer></script>
+    <script src="search.js" type="module" defer></script>
 </head>
-
+<body>
 <header>
-    <h1>Musical Museum</h1>
     <nav>
-        <a href="/main/index.html">Home</a>
-        <a href="/add-exhibit">Add Exhibit</a>
-        <a href="/shop">Shop</a>
-
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="admin-panel.html" id="admin-panel-link" class="active" style="display:none;">Admin Panel</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="login.html" id="login-link">Login</a></li>
+            <li><a href="register.html" id="register-link">Register</a></li>
+            <li><a href="#" id="logout-link" style="display:none;">Logout</a></li>
+        </ul>
     </nav>
 </header>
-<body>
-<div id="exhibits-container"></div>
-<script src="scripts.js"></script> <!-- Reference scripts.js -->
+<main>
+    <h1>Welcome to the Musical Museum</h1>
+    <section>
+        <h2>Search Exhibits</h2>
+        <form id="search-form">
+            <label for="search-name">Name:</label>
+            <input type="text" id="search-name" name="name">
+
+            <label for="search-period">Period:</label>
+            <select id="search-period" name="period"></select>
+
+            <label for="search-instrumentType">Instrument Type:</label>
+            <select id="search-instrumentType" name="instrumentType"></select>
+
+            <label for="search-region">Region:</label>
+            <select id="search-region" name="region"></select>
+
+            <label for="search-genre">Genre:</label>
+            <select id="search-genre" name="genre"></select>
+
+            <label for="search-technology">Technology:</label>
+            <select id="search-technology" name="technology"></select>
+
+            <button type="submit">Search</button>
+            <button type="button" id="load-all-btn">Load All Exhibits</button>
+        </form>
+    </section>
+    <div id="exhibits-container"></div>
+</main>
 </body>
 </html>

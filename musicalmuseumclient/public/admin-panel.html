@@ -1,10 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="scripts.js" type="module" defer></script>
 </head>
 <body>
-$END$
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="admin-panel.html" class="active">Admin Panel</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="login.html" id="login-link">Login</a></li>
+            <li><a href="register.html" id="register-link">Register</a></li>
+            <li><a href="#" id="logout-link" style="display:none;">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h2>Admin Panel</h2>
+    <ul class="admin-functions">
+        <li><a href="add-exhibit.html" class="button">Add Exhibit</a></li>
+        <li><a href="add-shop-ad.html" class="button">Add Shop Ad</a></li>
+        <li><a href="search-exhibits.html" class="button">Search Exhibits</a></li>
+        <li><a href="search-shop-ads.html" class="button">Search Shop Ads</a></li>
+    </ul>
+</main>
 </body>
 </html>

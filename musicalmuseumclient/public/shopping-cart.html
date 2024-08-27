@@ -1,10 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="cart.js" defer></script>
+    <script src="scripts.js" type="module" defer></script>
 </head>
 <body>
-$END$
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="admin-panel.html">Admin Panel</a></li>
+            <li><a href="shopping-cart.html" class="active">Cart</a></li>
+            <li><a href="login.html" id="login-link">Login</a></li>
+            <li><a href="register.html" id="register-link">Register</a></li>
+            <li><a href="#" id="logout-link" style="display:none;">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <h1>Shopping Cart</h1>
+    <div id="cart-container">
+        <table id="cart-table">
+            <thead>
+            <tr>
+                <th>Exhibit</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody id="cart-items">
+            <!-- Cart items will be populated here -->
+            </tbody>
+        </table>
+        <div id="cart-summary">
+            <p><strong>Total:</strong> $<span id="cart-total">0.00</span></p>
+            <button id="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+</main>
 </body>
 </html>

@@ -5,19 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="enums.js" type="module"></script>
+    <script src="shop.js" type="module" defer></script>
+    <script src="scripts.js" type="module" defer></script>
 </head>
 <body>
 <header>
-    <h1>Musical Museum</h1>
     <nav>
-        <a href="/main/index.html">Home</a>
-        <a href="/add-exhibit">Add Exhibit</a>
-        <a href="/shop">Shop</a>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html" class="active">Shop</a></li>
+            <li><a href="admin-panel.html">Admin Panel</a></li>
+            <li><a href="shopping-cart.html" >Cart</a></li>
+            <li><a href="login.html" id="login-link">Login</a></li>
+            <li><a href="register.html" id="register-link">Register</a></li>
+            <li><a href="#" id="logout-link" style="display:none;">Logout</a></li>
+        </ul>
     </nav>
 </header>
-<main>
-    <h2>Shop Page</h2>
-    <p>Welcome to the shop page. This section will be developed further.</p>
-</main>
+<div id="shop-container"></div>
 </body>
 </html>

@@ -1,44 +1,46 @@
-// public/main/enums.js
+// enums.js
 
-const Period = {
-    ANCIENT: 'Ancient',
-    MEDIEVAL: 'Medieval',
-    RENAISSANCE: 'Renaissance',
-    BAROQUE: 'Baroque',
-    CLASSICAL: 'Classical',
-    ROMANTIC: 'Romantic',
-    MODERN: 'Modern'
-};
+const Genre = Object.freeze({
+    CLASSICAL: 'CLASSICAL',
+    JAZZ: 'JAZZ',
+    ROCK: 'ROCK',
+    FOLK: 'FOLK',
+    BLUES: 'BLUES',
+    ELECTRONIC: 'ELECTRONIC'
+});
 
-const InstrumentType = {
-    STRING: 'String',
-    WIND: 'Wind',
-    PERCUSSION: 'Percussion',
-    KEYBOARD: 'Keyboard',
-    ELECTRONIC: 'Electronic'
-};
+const InstrumentType = Object.freeze({
+    STRING: 'STRING',
+    WOODWIND: 'WOODWIND',
+    BRASS: 'BRASS',
+    PERCUSSION: 'PERCUSSION',
+    KEYBOARD: 'KEYBOARD'
+});
 
-const Region = {
-    EUROPE: 'Europe',
-    ASIA: 'Asia',
-    AFRICA: 'Africa',
-    AMERICAS: 'Americas',
-    OCEANIA: 'Oceania'
-};
+const Period = Object.freeze({
+    ANTIQUITY: 'ANTIQUITY',
+    MEDIEVAL: 'MEDIEVAL',
+    RENAISSANCE: 'RENAISSANCE',
+    BAROQUE: 'BAROQUE',
+    CLASSICAL: 'CLASSICAL',
+    ROMANTIC: 'ROMANTIC',
+    MODERN: 'MODERN'
+});
 
-const Genre = {
-    CLASSICAL: 'Classical',
-    JAZZ: 'Jazz',
-    ROCK: 'Rock',
-    BLUES: 'Blues',
-    FOLK: 'Folk',
-    POP: 'Pop'
-};
+const Region = Object.freeze({
+    EUROPE: 'EUROPE',
+    ASIA: 'ASIA',
+    AFRICA: 'AFRICA',
+    AMERICAS: 'AMERICAS',
+    OCEANIA: 'OCEANIA'
+});
 
-const Technology = {
-    MECHANICAL: 'Mechanical',
-    ELECTRONIC: 'Electronic',
-    DIGITAL: 'Digital'
-};
+const Technology = Object.freeze({
+    TRADITIONAL: 'TRADITIONAL',
+    ELECTRONIC: 'ELECTRONIC',
+    DIGITAL: 'DIGITAL',
+    HYBRID: 'HYBRID'
+});
 
-export { Period, InstrumentType, Region, Genre, Technology };
+// Export the enums for use in other JavaScript files
+export { Genre, InstrumentType, Period, Region, Technology };

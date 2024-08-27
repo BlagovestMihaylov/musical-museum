@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Shop Ad</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="add-shop-ad.js" type="module" defer></script>
 </head>
 <body>
-$END$
+<header>
+    <nav>
+        <ul>
+            <li><a href="admin-panel.html">Admin Panel</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h1>Add New Shop Ad</h1>
+    <form id="shop-ad-form">
+        <label for="exhibitId">Exhibit ID:</label>
+        <input type="text" id="exhibitId" name="exhibitId" required>
+
+        <label for="price">Price:</label>
+        <input type="text" id="price" name="price" required>
+
+        <button type="submit">Add Shop Ad</button>
+    </form>
+</main>
 </body>
 </html>

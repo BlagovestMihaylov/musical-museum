@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/exhibits")
+@RequestMapping("/api/public/exhibits")
 public class ExhibitController
 {
 
@@ -33,58 +33,6 @@ public class ExhibitController
     {
         Exhibit exhibit = exhibitService.getExhibitById(id);
         return ResponseEntity.ok(exhibit);
-    }
-
-    @PostMapping
-    public ResponseEntity<Exhibit> createExhibit(@RequestBody Exhibit exhibit)
-    {
-        Exhibit createdExhibit = exhibitService.createExhibit(
-                exhibit.getId(),
-                exhibit.getName(),
-                exhibit.getDescription(),
-                exhibit.getImageUrl(),
-                exhibit.getPeriod(),
-                exhibit.getInstrumentType(),
-                exhibit.getRegion(),
-                exhibit.getGenre(),
-                exhibit.getTechnology()
-        );
-        return ResponseEntity.ok(createdExhibit);
-    }
-
-    @GetMapping("/short")
-    public ResponseEntity<Exhibit> createExhibitShort()
-    {
-        Exhibit createdExhibit = exhibitService.createExhibitShort();
-        return ResponseEntity.ok(createdExhibit);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Exhibit> updateExhibit(
-            @PathVariable("id") String id,
-            @RequestBody Exhibit exhibit
-    )
-    {
-        Exhibit updatedExhibit = exhibitService.updateExhibit(
-                id,
-                exhibit.getName(),
-                exhibit.getDescription(),
-                exhibit.getImageUrl(),
-                exhibit.getPeriod(),
-                exhibit.getInstrumentType(),
-                exhibit.getRegion(),
-                exhibit.getGenre(),
-                exhibit.getTechnology()
-        );
-        return ResponseEntity.ok(updatedExhibit);
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteExhibit(@PathVariable("id") String id)
-    {
-        exhibitService.deleteExhibit(id);
-        return ResponseEntity.noContent()
-                             .build();
     }
 
     @GetMapping("/period/{period}")

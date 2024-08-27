@@ -1,0 +1,9 @@
+FROM mongo-express
+
+COPY wait-for-mongo.sh /wait-for-mongo.sh
+
+RUN chmod +x /wait-for-mongo.sh
+
+ENTRYPOINT ["/wait-for-mongo.sh", "tini", "--"]
+
+CMD ["node", "app"]

@@ -21,4 +21,9 @@ public class UserService
     {
         return new ArrayList<>(userRepository.findAll());
     }
+
+    public User getByEmail(final String id)
+    {
+        return userRepository.findByEmail(id).orElse(null);
+    }
 }

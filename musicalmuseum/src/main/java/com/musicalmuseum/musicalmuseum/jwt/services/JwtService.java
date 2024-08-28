@@ -61,6 +61,7 @@ public class JwtService
                 .builder()
                 .setClaims(extraClaims)
                 .claim("roles", userDetails.getAuthorities())
+                .claim("email", userDetails.getUsername())
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))

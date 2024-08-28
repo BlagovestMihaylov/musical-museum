@@ -40,8 +40,10 @@ public class SecurityConfiguration
                                                .permitAll()
                                                .requestMatchers("/api/admin/**")
                                                .hasAuthority("ROLE_ADMIN")
-//           .requestMatchers("/customer/**").hasAuthority("ROLE_CUSTOMER")
-//           .anyRequest().authenticated()
+                                               .requestMatchers("api/user/**")
+                                               .hasAuthority("ROLE_USER")
+                                               .anyRequest()
+                                               .authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .authenticationProvider(authenticationProvider);

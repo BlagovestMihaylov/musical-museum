@@ -1,6 +1,4 @@
-import {Genre, InstrumentType, Period, Region, Technology} from './enums.js';
-import jwt_decode from 'jwt-decode';
-
+// scripts.js
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Fetching exhibits...');
@@ -30,16 +28,12 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Error fetching exhibits:', error));
 });
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('nav a');
     const currentPage = window.location.pathname;
 
     navLinks.forEach(link => {
-        // Get the href attribute and ensure it's a relative path
         const linkPath = new URL(link.href).pathname;
-
-        // Remove leading slashes for comparison consistency
         const normalizedCurrentPage = currentPage.replace(/\/$/, ''); // Remove trailing slash
         const normalizedLinkPath = linkPath.replace(/\/$/, ''); // Remove trailing slash
 
@@ -52,56 +46,85 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-    checkAuthStatus();
-
     const logoutLink = document.getElementById('logout-link');
     logoutLink.addEventListener('click', () => {
         // Handle logout process
         fetch('http://localhost:8080/api/public/auth/logout', {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                'Authorization': `Bearer ${localStorage.getItem('jwtToken')}`
             }
         })
             .then(() => {
-                localStorage.removeItem('authToken');
+                localStorage.removeItem('jwtToken');
                 window.location.href = 'login.html';
             })
             .catch(error => console.error('Logout error:', error));
     });
 });
 
-function checkAuthStatus() {
-    const token = localStorage.getItem('authToken');
+document.addEventListener('DOMContentLoaded', function () {
+    // Load the header from header.html
+    function loadHeader() {
+        fetch('header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+                handleAuthentication(); // Ensure authentication handling after loading header
+            });
+    }
 
-    if (token) {
-        try {
-            const decodedToken = jwt_decode(token);
-            const roles = decodedToken.roles || [];
+    function isLoggedIn() {
+        const token = localStorage.getItem('jwtToken');
+        if (token) {
+            const tokenPayload = parseJwt(token);
+            const currentTime = Math.floor(Date.now() / 1000);
+            return tokenPayload.exp > currentTime;
+        }
+        return false;
+    }
 
-            // Extract authorities from roles
-            const authorities = roles.map(role => role.authority);
+    function handleAuthentication() {
+        if (isLoggedIn()) {
+            document.getElementById('login-link').style.display = 'none';
+            document.getElementById('register-link').style.display = 'none';
+            document.getElementById('logout-link').style.display = 'block';
 
-            if (authorities.includes('ROLE_ADMIN')) {
+            const token = localStorage.getItem('jwtToken');
+            const tokenPayload = parseJwt(token);
+            if (tokenPayload.roles && tokenPayload.roles.some(role => role.authority === 'ROLE_ADMIN')) {
                 document.getElementById('admin-panel-link').style.display = 'block';
             } else {
                 document.getElementById('admin-panel-link').style.display = 'none';
             }
-
-            document.getElementById('login-link').style.display = 'none';
-            document.getElementById('register-link').style.display = 'none';
-            document.getElementById('logout-link').style.display = 'block';
-        } catch (error) {
-            console.error('Error decoding JWT:', error);
-            // Optionally handle errors or unauthenticated states
+        } else {
+            document.getElementById('login-link').style.display = 'block';
+            document.getElementById('register-link').style.display = 'block';
+            document.getElementById('logout-link').style.display = 'none';
+            document.getElementById('admin-panel-link').style.display = 'none';
         }
-    } else {
-        document.getElementById('admin-panel-link').style.display = 'none';
-        document.getElementById('login-link').style.display = 'block';
-        document.getElementById('register-link').style.display = 'block';
-        document.getElementById('logout-link').style.display = 'none';
+        setActiveNavLink(); // Ensure the active class is set after authentication
     }
-}
 
+    function parseJwt(token) {
+        const base64Url = token.split('.')[1];
+        const base64 = decodeURIComponent(atob(base64Url).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+        return JSON.parse(base64);
+    }
 
+    function handleLogout() {
+        localStorage.removeItem('jwtToken');
+        window.location.href = 'login.html'; // Redirect to the login page
+    }
 
+    document.addEventListener('click', function (event) {
+        if (event.target.id === 'logout-link') {
+            event.preventDefault();
+            handleLogout();
+        }
+    });
+
+    loadHeader(); // Load the header initially
+});
